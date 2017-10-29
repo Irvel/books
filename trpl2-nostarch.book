@@ -1,0 +1,53 @@
+title: "The Rust Programming Language"
+author: "Steve Klabnik and Carol Nichols, with Contributions from the Rust Community"
+lang: en
+date: 2017-10-28
+
+crowbook.html_as_text: false
+tex.hyperref: true
+rendering.highlight: syntect
+tex.links_as_footnotes: false
+rendering.num_depth: 3
+rendering.inline_toc: true
+input.clean.smart_quotes: false
+input.clean: false
+epub.chapter.xhtml: book_template.xhtml
+epub.version: 3
+epub.css: stylesheet.css
+
+resources.base_path.images: trpl/second-edition/src/img/
+output.base_path: docs/
+
+output.html: trpl2.html
+output.epub: trpl2.epub
+output.pdf: trpl2.pdf
+
+
+@ Getting started
++ trpl/second-edition/nostarch/chapter01.md
++ trpl/second-edition/nostarch/chapter02.md
++ trpl/second-edition/nostarch/chapter03.md
++ trpl/second-edition/nostarch/chapter04.md
++ trpl/second-edition/nostarch/chapter05.md
++ trpl/second-edition/nostarch/chapter06.md
+
+@ Basic Rust Literacy
++ trpl/second-edition/nostarch/chapter07.md
++ trpl/second-edition/nostarch/chapter08.md
++ trpl/second-edition/nostarch/chapter09.md
++ trpl/second-edition/nostarch/chapter10.md
++ trpl/second-edition/nostarch/chapter11.md
++ trpl/second-edition/nostarch/chapter12.md
+
+@ Thinking in Rust
++ trpl/second-edition/nostarch/chapter13.md
++ trpl/second-edition/nostarch/chapter14.md
++ trpl/second-edition/nostarch/chapter15.md
++ trpl/second-edition/nostarch/chapter16.md
++ trpl/second-edition/nostarch/chapter17.md
+
+@ Advanced Topics
++ trpl/second-edition/nostarch/chapter18.md
++ trpl/second-edition/nostarch/chapter19.md
++ trpl/second-edition/nostarch/chapter20.md
++ trpl/second-edition/nostarch/appendix.md
