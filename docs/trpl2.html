@@ -3871,15 +3871,15 @@ s.</span><span style="color:#185fd9;">len</span><span style="color:#393d3d;">(</
     s.</span><span style="color:#185fd9;">clear</span><span style="color:#393d3d;">(</span><span style="color:#393d3d;">)</span><span style="color:#393d3d;">;</span><span style="color:#393d3d;"> </span><span style="font-style:italic;color:#7d7d7d;">// Error!
 </span><span style="color:#393d3d;">}</span><span style="color:#393d3d;">
 </span></pre><p id = "para-542">Here’s the compiler error:</p>
-<pre><span style="color:#393d3d;">17:6 error: cannot borrow `s` as mutable because it is also borrowed as
+<pre><span style="color:#f76d47;">17</span><span style="color:#393d3d;">:</span><span style="color:#f76d47;">6</span><span style="color:#393d3d;"> error</span><span style="color:#393d3d;">:</span><span style="color:#393d3d;"> cannot borrow </span><span style="color:#393d3d;">`</span><span style="color:#51a825;">s</span><span style="color:#393d3d;">`</span><span style="color:#393d3d;"> as mutable because it is also borrowed as
             immutable [E0502]
-    s.clear(); // Error!
+    s.clear()</span><span style="color:#393d3d;">;</span><span style="color:#393d3d;"> </span><span style="color:#393d3d;">/</span><span style="color:#393d3d;">/</span><span style="color:#393d3d;"> Error</span><span style="color:#393d3d;">!</span><span style="color:#393d3d;">
     ^
-15:29 note: previous borrow of `s` occurs here; the immutable borrow prevents
-            subsequent moves or mutable borrows of `s` until the borrow ends
-    let word = first_word(&amp;s);
+</span><span style="color:#f76d47;">15</span><span style="color:#393d3d;">:</span><span style="color:#f76d47;">29</span><span style="color:#393d3d;"> note</span><span style="color:#393d3d;">:</span><span style="color:#393d3d;"> previous borrow of </span><span style="color:#393d3d;">`</span><span style="color:#51a825;">s</span><span style="color:#393d3d;">`</span><span style="color:#393d3d;"> occurs here</span><span style="color:#393d3d;">;</span><span style="color:#393d3d;"> the immutable borrow prevents
+            subsequent moves or mutable borrows of </span><span style="color:#393d3d;">`</span><span style="color:#51a825;">s</span><span style="color:#393d3d;">`</span><span style="color:#393d3d;"> until the borrow ends
+    </span><span style="color:#185fd9;">let</span><span style="color:#393d3d;"> word </span><span style="color:#393d3d;">=</span><span style="color:#393d3d;"> first_word(</span><span style="color:#393d3d;">&amp;</span><span style="color:#393d3d;">s)</span><span style="color:#393d3d;">;</span><span style="color:#393d3d;">
                            ^
-18:2 note: previous borrow ends here
+</span><span style="color:#f76d47;">18</span><span style="color:#393d3d;">:</span><span style="color:#f76d47;">2</span><span style="color:#393d3d;"> note</span><span style="color:#393d3d;">:</span><span style="color:#393d3d;"> previous borrow ends here
 fn main() {
 
 }
@@ -4093,17 +4093,17 @@ user1.email </span><span style="color:#393d3d;">=</span><span style="color:#393d
     </span><span style="color:#393d3d;">}</span><span style="color:#393d3d;">;</span><span style="color:#393d3d;">
 </span><span style="color:#393d3d;">}</span><span style="color:#393d3d;">
 </span></pre><p id = "para-583">The compiler will complain that it needs lifetime specifiers:</p>
-<pre><span style="color:#393d3d;">errorE0106: missing lifetime specifier
- --&gt;
-  |
-2 |     username: &amp;str,
-  |               ^ expected lifetime parameter
+<pre><span style="color:#d12d29;">errorE0106: missing lifetime specifier
+ </span><span style="color:#393d3d;">--</span><span style="color:#393d3d;">&gt;</span><span style="color:#393d3d;">
+  </span><span style="color:#393d3d;">|</span><span style="color:#393d3d;">
+</span><span style="color:#f76d47;">2</span><span style="color:#393d3d;"> </span><span style="color:#393d3d;">|</span><span style="color:#393d3d;">     username</span><span style="color:#393d3d;">:</span><span style="color:#393d3d;"> </span><span style="color:#393d3d;">&amp;</span><span style="color:#393d3d;">str</span><span style="color:#393d3d;">,</span><span style="color:#393d3d;">
+  </span><span style="color:#393d3d;">|</span><span style="color:#393d3d;">               ^ expected lifetime parameter
 
-errorE0106: missing lifetime specifier
- --&gt;
-  |
-3 |     email: &amp;str,
-  |            ^ expected lifetime parameter
+</span><span style="color:#d12d29;">errorE0106: missing lifetime specifier
+ </span><span style="color:#393d3d;">--</span><span style="color:#393d3d;">&gt;</span><span style="color:#393d3d;">
+  </span><span style="color:#393d3d;">|</span><span style="color:#393d3d;">
+</span><span style="color:#f76d47;">3</span><span style="color:#393d3d;"> </span><span style="color:#393d3d;">|</span><span style="color:#393d3d;">     email</span><span style="color:#393d3d;">:</span><span style="color:#393d3d;"> </span><span style="color:#393d3d;">&amp;</span><span style="color:#393d3d;">str</span><span style="color:#393d3d;">,</span><span style="color:#393d3d;">
+  </span><span style="color:#393d3d;">|</span><span style="color:#393d3d;">            ^ expected lifetime parameter
 </span></pre><p id = "para-584">We’ll discuss how to fix these errors so you can store references in structs in Chapter 10, but for now, we’ll fix errors like these using owned types like <code>String</code> instead of references like <code>&amp;str</code>.</p>
 </blockquote>
 <h2 id = "link-100">5.2. An Example Program Using Structs</h2>
@@ -4911,8 +4911,8 @@ note: ... or maybe </span><span style="color:#393d3d;">`</span><span style="colo
 </span></pre><p id = "para-784">Listing 7-4: Error when trying to extract the <code>server</code> submodule into <em>src/server.rs</em></p>
 <p id = "para-785">The error says we <code>cannot declare a new module at this location</code> and is pointing to the <code>mod server;</code> line in <em>src/network.rs</em>. So <em>src/network.rs</em> is different than <em>src/lib.rs</em> somehow: keep reading to understand why.</p>
 <p id = "para-786">The note in the middle of Listing 7-4 is actually very helpful because it points out something we haven’t yet talked about doing:</p>
-<pre><span style="color:#393d3d;">note: maybe move this module `network` to its own directory via
-`network/mod.rs`
+<pre><span style="color:#393d3d;">note: maybe move this module </span><span style="color:#393d3d;">`</span><span style="color:#51a825;">network</span><span style="color:#393d3d;">`</span><span style="color:#393d3d;"> to its own directory via
+</span><span style="color:#393d3d;">`</span><span style="color:#51a825;">network/mod.rs</span><span style="color:#393d3d;">`</span><span style="color:#393d3d;">
 </span></pre><p id = "para-787">Instead of continuing to follow the same file naming pattern we used previously, we can do what the note suggests:</p>
 <ol>
 <li>Make a new <em>directory</em> named <em>network</em>, the parent module’s name.</li>
@@ -4956,23 +4956,23 @@ $ </span><span style="color:#185fd9;">mv</span><span style="color:#393d3d;"> src
 <p id = "para-797">Next, we’ll talk about the <code>pub</code> keyword and get rid of those warnings!</p>
 <h2 id = "link-130">1.2. Controlling Visibility with <code>pub</code></h2>
 <p id = "para-798">We resolved the error messages shown in Listing 7-4 by moving the <code>network</code> and <code>network::server</code> code into the <em>src/network/mod.rs</em> and <em>src/network/server.rs</em> files, respectively. At that point, <code>cargo build</code> was able to build our project, but we still get warning messages about the <code>client::connect</code>, <code>network::connect</code>, and <code>network::server::connect</code> functions not being used:</p>
-<pre><span style="color:#393d3d;">warning: function is never used: `connect`, #[warn(dead_code)] on by default
+<pre><span style="color:#ff9c2c;">warning: function is never used: `connect`, #[warn(dead_code)] on by default
 src/client.rs:1:1
   |
 1 | fn connect() {
   | ^
 
 warning: function is never used: `connect`, #[warn(dead_code)] on by default
- --&gt; src/network/mod.rs:1:1
-  |
-1 | fn connect() {
-  | ^
+ </span><span style="color:#393d3d;">--</span><span style="color:#393d3d;">&gt;</span><span style="color:#393d3d;"> src</span><span style="color:#393d3d;">/</span><span style="color:#393d3d;">network</span><span style="color:#393d3d;">/</span><span style="color:#393d3d;">mod.rs</span><span style="color:#393d3d;">:</span><span style="color:#f76d47;">1</span><span style="color:#393d3d;">:</span><span style="color:#f76d47;">1</span><span style="color:#393d3d;">
+  </span><span style="color:#393d3d;">|</span><span style="color:#393d3d;">
+</span><span style="color:#f76d47;">1</span><span style="color:#393d3d;"> </span><span style="color:#393d3d;">|</span><span style="color:#393d3d;"> fn connect() {
+  </span><span style="color:#393d3d;">|</span><span style="color:#393d3d;"> ^
 
-warning: function is never used: `connect`, #[warn(dead_code)] on by default
- --&gt; src/network/server.rs:1:1
-  |
-1 | fn connect() {
-  | ^
+</span><span style="color:#ff9c2c;">warning: function is never used: `connect`, #[warn(dead_code)] on by default
+ </span><span style="color:#393d3d;">--</span><span style="color:#393d3d;">&gt;</span><span style="color:#393d3d;"> src</span><span style="color:#393d3d;">/</span><span style="color:#393d3d;">network</span><span style="color:#393d3d;">/</span><span style="color:#393d3d;">server.rs</span><span style="color:#393d3d;">:</span><span style="color:#f76d47;">1</span><span style="color:#393d3d;">:</span><span style="color:#f76d47;">1</span><span style="color:#393d3d;">
+  </span><span style="color:#393d3d;">|</span><span style="color:#393d3d;">
+</span><span style="color:#f76d47;">1</span><span style="color:#393d3d;"> </span><span style="color:#393d3d;">|</span><span style="color:#393d3d;"> fn connect() {
+  </span><span style="color:#393d3d;">|</span><span style="color:#393d3d;"> ^
 </span></pre><p id = "para-799">So why are we receiving these warnings? After all, we’re building a library with functions that are intended to be used by our <em>users</em>, not necessarily by us within our own project, so it shouldn’t matter that these <code>connect</code> functions go unused. The point of creating them is that they will be used by another project, not our own.</p>
 <p id = "para-800">To understand why this program invokes these warnings, let’s try using the <code>connect</code> library from another project, calling it externally. To do that, we’ll create a binary crate in the same directory as our library crate by making a <em>src/main.rs</em> file containing this code:</p>
 <p id = "para-801">Filename: src/main.rs</p>
@@ -5009,17 +5009,17 @@ warning: function is never used: `connect`, #[warn(dead_code)] on by default
 <pre><span style="color:#eb1560;">pub</span><span style="color:#393d3d;"> </span><span style="color:#eb1560;">fn</span><span style="color:#393d3d;"> </span><span style="color:#185fd9;">connect</span><span style="color:#393d3d;">(</span><span style="color:#393d3d;">)</span><span style="color:#393d3d;"> </span><span style="color:#393d3d;">{</span><span style="color:#393d3d;">
 </span><span style="color:#393d3d;">}</span><span style="color:#393d3d;">
 </span></pre><p id = "para-813">Now run <code>cargo build</code> again:</p>
-<pre><span style="color:#393d3d;">warning: function is never used: `connect`, #[warn(dead_code)] on by default
- --&gt; src/network/mod.rs:1:1
-  |
-1 | fn connect() {
-  | ^
+<pre><span style="color:#ff9c2c;">warning: function is never used: `connect`, #[warn(dead_code)] on by default
+ </span><span style="color:#393d3d;">--</span><span style="color:#393d3d;">&gt;</span><span style="color:#393d3d;"> src</span><span style="color:#393d3d;">/</span><span style="color:#393d3d;">network</span><span style="color:#393d3d;">/</span><span style="color:#393d3d;">mod.rs</span><span style="color:#393d3d;">:</span><span style="color:#f76d47;">1</span><span style="color:#393d3d;">:</span><span style="color:#f76d47;">1</span><span style="color:#393d3d;">
+  </span><span style="color:#393d3d;">|</span><span style="color:#393d3d;">
+</span><span style="color:#f76d47;">1</span><span style="color:#393d3d;"> </span><span style="color:#393d3d;">|</span><span style="color:#393d3d;"> fn connect() {
+  </span><span style="color:#393d3d;">|</span><span style="color:#393d3d;"> ^
 
-warning: function is never used: `connect`, #[warn(dead_code)] on by default
- --&gt; src/network/server.rs:1:1
-  |
-1 | fn connect() {
-  | ^
+</span><span style="color:#ff9c2c;">warning: function is never used: `connect`, #[warn(dead_code)] on by default
+ </span><span style="color:#393d3d;">--</span><span style="color:#393d3d;">&gt;</span><span style="color:#393d3d;"> src</span><span style="color:#393d3d;">/</span><span style="color:#393d3d;">network</span><span style="color:#393d3d;">/</span><span style="color:#393d3d;">server.rs</span><span style="color:#393d3d;">:</span><span style="color:#f76d47;">1</span><span style="color:#393d3d;">:</span><span style="color:#f76d47;">1</span><span style="color:#393d3d;">
+  </span><span style="color:#393d3d;">|</span><span style="color:#393d3d;">
+</span><span style="color:#f76d47;">1</span><span style="color:#393d3d;"> </span><span style="color:#393d3d;">|</span><span style="color:#393d3d;"> fn connect() {
+  </span><span style="color:#393d3d;">|</span><span style="color:#393d3d;"> ^
 </span></pre><p id = "para-814">The code compiled, and the warning about <code>client::connect</code> not being used is gone!</p>
 <p id = "para-815">Unused code warnings don’t always indicate that an item in your code needs to be made public: if you <em>didn’t</em> want these functions to be part of your public API, unused code warnings could be alerting you to code you no longer need that you can safely delete. They could also be alerting you to a bug if you had just accidentally removed all places within your library where this function is called.</p>
 <p id = "para-816">But in this case, we <em>do</em> want the other two functions to be part of our crate’s public API, so let’s mark them as <code>pub</code> as well to get rid of the remaining warnings. Modify <em>src/network/mod.rs</em> to look like the following:</p>
@@ -5029,28 +5029,28 @@ warning: function is never used: `connect`, #[warn(dead_code)] on by default
 
 </span><span style="color:#eb1560;">mod</span><span style="color:#393d3d;"> </span><span style="color:#393d3d;">server</span><span style="color:#393d3d;">;</span><span style="color:#393d3d;">
 </span></pre><p id = "para-818">Then compile the code:</p>
-<pre><span style="color:#393d3d;">warning: function is never used: `connect`, #[warn(dead_code)] on by default
- --&gt; src/network/mod.rs:1:1
-  |
-1 | pub fn connect() {
-  | ^
+<pre><span style="color:#ff9c2c;">warning: function is never used: `connect`, #[warn(dead_code)] on by default
+ </span><span style="color:#393d3d;">--</span><span style="color:#393d3d;">&gt;</span><span style="color:#393d3d;"> src</span><span style="color:#393d3d;">/</span><span style="color:#393d3d;">network</span><span style="color:#393d3d;">/</span><span style="color:#393d3d;">mod.rs</span><span style="color:#393d3d;">:</span><span style="color:#f76d47;">1</span><span style="color:#393d3d;">:</span><span style="color:#f76d47;">1</span><span style="color:#393d3d;">
+  </span><span style="color:#393d3d;">|</span><span style="color:#393d3d;">
+</span><span style="color:#f76d47;">1</span><span style="color:#393d3d;"> </span><span style="color:#393d3d;">|</span><span style="color:#393d3d;"> pub fn connect() {
+  </span><span style="color:#393d3d;">|</span><span style="color:#393d3d;"> ^
 
-warning: function is never used: `connect`, #[warn(dead_code)] on by default
- --&gt; src/network/server.rs:1:1
-  |
-1 | fn connect() {
-  | ^
+</span><span style="color:#ff9c2c;">warning: function is never used: `connect`, #[warn(dead_code)] on by default
+ </span><span style="color:#393d3d;">--</span><span style="color:#393d3d;">&gt;</span><span style="color:#393d3d;"> src</span><span style="color:#393d3d;">/</span><span style="color:#393d3d;">network</span><span style="color:#393d3d;">/</span><span style="color:#393d3d;">server.rs</span><span style="color:#393d3d;">:</span><span style="color:#f76d47;">1</span><span style="color:#393d3d;">:</span><span style="color:#f76d47;">1</span><span style="color:#393d3d;">
+  </span><span style="color:#393d3d;">|</span><span style="color:#393d3d;">
+</span><span style="color:#f76d47;">1</span><span style="color:#393d3d;"> </span><span style="color:#393d3d;">|</span><span style="color:#393d3d;"> fn connect() {
+  </span><span style="color:#393d3d;">|</span><span style="color:#393d3d;"> ^
 </span></pre><p id = "para-819">Hmmm, we’re still getting an unused function warning, even though <code>network::connect</code> is set to <code>pub</code>. The reason is that the function is public within the module, but the <code>network</code> module that the function resides in is not public. We’re working from the interior of the library out this time, whereas with <code>client::connect</code> we worked from the outside in. We need to change <em>src/lib.rs</em> to make <code>network</code> public too, like so:</p>
 <p id = "para-820">Filename: src/lib.rs</p>
 <pre><span style="color:#eb1560;">pub</span><span style="color:#393d3d;"> </span><span style="color:#eb1560;">mod</span><span style="color:#393d3d;"> </span><span style="color:#393d3d;">client</span><span style="color:#393d3d;">;</span><span style="color:#393d3d;">
 
 </span><span style="color:#eb1560;">pub</span><span style="color:#393d3d;"> </span><span style="color:#eb1560;">mod</span><span style="color:#393d3d;"> </span><span style="color:#393d3d;">network</span><span style="color:#393d3d;">;</span><span style="color:#393d3d;">
 </span></pre><p id = "para-821">Now when we compile, that warning is gone:</p>
-<pre><span style="color:#393d3d;">warning: function is never used: `connect`, #[warn(dead_code)] on by default
- --&gt; src/network/server.rs:1:1
-  |
-1 | fn connect() {
-  | ^
+<pre><span style="color:#ff9c2c;">warning: function is never used: `connect`, #[warn(dead_code)] on by default
+ </span><span style="color:#393d3d;">--</span><span style="color:#393d3d;">&gt;</span><span style="color:#393d3d;"> src</span><span style="color:#393d3d;">/</span><span style="color:#393d3d;">network</span><span style="color:#393d3d;">/</span><span style="color:#393d3d;">server.rs</span><span style="color:#393d3d;">:</span><span style="color:#f76d47;">1</span><span style="color:#393d3d;">:</span><span style="color:#f76d47;">1</span><span style="color:#393d3d;">
+  </span><span style="color:#393d3d;">|</span><span style="color:#393d3d;">
+</span><span style="color:#f76d47;">1</span><span style="color:#393d3d;"> </span><span style="color:#393d3d;">|</span><span style="color:#393d3d;"> fn connect() {
+  </span><span style="color:#393d3d;">|</span><span style="color:#393d3d;"> ^
 </span></pre><p id = "para-822">Only one warning is left! Try to fix this one on your own!</p>
 <h3 id = "link-132">1.2.2. Privacy Rules</h3>
 <p id = "para-823">Overall, these are the rules for item visibility:</p>
@@ -7933,12 +7933,12 @@ Problem parsing arguments: </span><span style="color:#185fd9;">not</span><span s
 <p id = "para-1571">The second change we’re making is removing the calls to <code>expect</code> in favor of <code>?</code>, like we talked about in Chapter 9. Rather than <code>panic!</code> on an error, this will return the error value from the current function for the caller to handle.</p>
 <p id = "para-1572">Thirdly, this function now returns an <code>Ok</code> value in the success case. We’ve declared the <code>run</code> function’s success type as <code>()</code> in the signature, which means we need to wrap the unit type value in the <code>Ok</code> value. This <code>Ok(())</code> syntax may look a bit strange at first, but using <code>()</code> like this is the idiomatic way to indicate that we’re calling <code>run</code> for its side effects only; it doesn’t return a value we need.</p>
 <p id = "para-1573">When you run this, it will compile, but with a warning:</p>
-<pre><span style="color:#393d3d;">warning: unused result which must be used, #[warn(unused_must_use)] on by
+<pre><span style="color:#ff9c2c;">warning: unused result which must be used, #[warn(unused_must_use)] on by
 default
-  --&gt; src/main.rs:39:5
-   |
-39 |     run(config);
-   |     ^^^^^^^^^^^^
+  </span><span style="color:#393d3d;">--</span><span style="color:#393d3d;">&gt;</span><span style="color:#393d3d;"> src</span><span style="color:#393d3d;">/</span><span style="color:#393d3d;">main.rs</span><span style="color:#393d3d;">:</span><span style="color:#f76d47;">39</span><span style="color:#393d3d;">:</span><span style="color:#f76d47;">5</span><span style="color:#393d3d;">
+   </span><span style="color:#393d3d;">|</span><span style="color:#393d3d;">
+</span><span style="color:#f76d47;">39</span><span style="color:#393d3d;"> </span><span style="color:#393d3d;">|</span><span style="color:#393d3d;">     run(config)</span><span style="color:#393d3d;">;</span><span style="color:#393d3d;">
+   </span><span style="color:#393d3d;">|</span><span style="color:#393d3d;">     ^^^^^^^^^^^^
 </span></pre><p id = "para-1574">Rust is telling us that our code ignores the <code>Result</code> value, which might be indicating that there was an error. We’re not checking to see if there was an error or not, though, and the compiler is reminding us that we probably meant to have some error handling code here! Let’s rectify that now.</p>
 <h4 id = "link-258">Handling Errors Returned from <code>run</code> in <code>main</code></h4>
 <p id = "para-1575">We’ll check for errors and handle them using a technique similar to the way we handled errors with <code>Config::new</code> in Listing 12-10, but with a slight difference:</p>
@@ -8876,14 +8876,14 @@ closure form instead
 v1.</span><span style="color:#185fd9;">iter</span><span style="color:#393d3d;">(</span><span style="color:#393d3d;">)</span><span style="color:#393d3d;">.</span><span style="color:#185fd9;">map</span><span style="color:#393d3d;">(</span><span style="color:#393d3d;">|</span><span style="color:#393d3d;">x</span><span style="color:#393d3d;">|</span><span style="color:#393d3d;"> </span><span style="color:#393d3d;">x + </span><span style="color:#f76d47;">1</span><span style="color:#393d3d;">)</span><span style="color:#393d3d;">;</span><span style="color:#393d3d;">
 </span></pre><p id = "para-1807">Listing 13-17: Calling the iterator adapter <code>map</code> to create a new iterator</p>
 <p id = "para-1808">The warning we get is:</p>
-<pre><span style="color:#393d3d;">warning: unused result which must be used: iterator adaptors are lazy and do
+<pre><span style="color:#ff9c2c;">warning: unused result which must be used: iterator adaptors are lazy and do
 nothing unless consumed
- --&gt; src/main.rs:4:1
-  |
-4 | v1.iter().map(|x| x + 1);
-  | ^^^^^^^^^^^^^^^^^^^^^^^^^
-  |
-  = note: #[warn(unused_must_use)] on by default
+ </span><span style="color:#393d3d;">--</span><span style="color:#393d3d;">&gt;</span><span style="color:#393d3d;"> src</span><span style="color:#393d3d;">/</span><span style="color:#393d3d;">main.rs</span><span style="color:#393d3d;">:</span><span style="color:#f76d47;">4</span><span style="color:#393d3d;">:</span><span style="color:#f76d47;">1</span><span style="color:#393d3d;">
+  </span><span style="color:#393d3d;">|</span><span style="color:#393d3d;">
+</span><span style="color:#f76d47;">4</span><span style="color:#393d3d;"> </span><span style="color:#393d3d;">|</span><span style="color:#393d3d;"> </span><span style="color:#f76d47;">v1.</span><span style="color:#185fd9;">iter</span><span style="color:#393d3d;">().</span><span style="color:#185fd9;">map</span><span style="color:#393d3d;">(</span><span style="color:#393d3d;">|</span><span style="color:#393d3d;">x</span><span style="color:#393d3d;">|</span><span style="color:#393d3d;"> x </span><span style="color:#393d3d;">+</span><span style="color:#393d3d;"> </span><span style="color:#f76d47;">1</span><span style="color:#393d3d;">)</span><span style="color:#393d3d;">;</span><span style="color:#393d3d;">
+  </span><span style="color:#393d3d;">|</span><span style="color:#393d3d;"> ^^^^^^^^^^^^^^^^^^^^^^^^^
+  </span><span style="color:#393d3d;">|</span><span style="color:#393d3d;">
+  </span><span style="color:#393d3d;">=</span><span style="color:#393d3d;"> note</span><span style="color:#393d3d;">:</span><span style="color:#393d3d;"> </span><span style="font-style:italic;color:#7d7d7d;">#</span><span style="font-style:italic;color:#7d7d7d;">[warn(unused_must_use)] on by default
 </span></pre><p id = "para-1809">The code in Listing 13-17 isn’t actually doing anything; the closure we’ve specified never gets called. The warning reminds us why: iterator adaptors are lazy, and we need to consume the iterator here.</p>
 <p id = "para-1810">To fix this and consume the iterator, we’re going to use the <code>collect</code> method, which we saw briefly in Chapter 12. This method consumes the iterator and collects the resulting values into a collection data type.</p>
 <p id = "para-1811">In Listing 13-18, we collect the results of iterating over the iterator that’s returned from the call to <code>map</code> into a vector. This vector will end up containing each item from the original vector incremented by 1:</p>
@@ -13259,10 +13259,10 @@ $ </span><span style="color:#185fd9;">cd</span><span style="color:#393d3d;"> hel
 <p id = "para-2966">The <code>incoming</code> method on <code>TcpListener</code> returns an iterator that gives us a sequence of streams (more specifically, streams of type <code>TcpStream</code>). A <em>stream</em> represents an open connection between the client and the server. A <em>connection</em> is the name for the full request/response process when a client connects to the server, the server generates a response, and the server closes the connection. As such, the <code>TcpStream</code> will let us read from itself to see what the client sent, and we can write our response to it. So this <code>for</code> loop will process each connection in turn and produce a series of streams for us to handle.</p>
 <p id = "para-2967">For now, handling a stream means calling <code>unwrap</code> to terminate our program if the stream has any errors, then printing a message. Errors can happen because we’re not actually iterating over connections, we’re iterating over <em>connection attempts</em>. The connection might not work for a number of reasons, many of them operating-system specific. For example, many operating systems have a limit to the number of simultaneous open connections; new connection attempts will then produce an error until some of the open connections are closed.</p>
 <p id = "para-2968">Let’s try this code out! First invoke <code>cargo run</code> in the terminal, then load up <code>127.0.0.1:8080</code> in a web browser. The browser will show an error message that will say something similar to “Connection reset”, since we’re not currently sending any data back. If we look at our terminal, though, we’ll see a bunch of messages that were printed when the browser connected to the server!</p>
-<pre><span style="color:#393d3d;">     Running `target/debug/hello`
-Connection established!
-Connection established!
-Connection established!
+<pre><span style="color:#393d3d;">     Running </span><span style="color:#393d3d;">`</span><span style="color:#51a825;">target/debug/hello</span><span style="color:#393d3d;">`</span><span style="color:#393d3d;">
+Connection established</span><span style="color:#393d3d;">!</span><span style="color:#393d3d;">
+Connection established</span><span style="color:#393d3d;">!</span><span style="color:#393d3d;">
+Connection established</span><span style="color:#393d3d;">!</span><span style="color:#393d3d;">
 </span></pre><p id = "para-2969">We got multiple messages printed out for one browser request; these connections might be the browser making a request for the page and a request for a <code>favicon.ico</code> icon that appears in the browser tab, or the browser might be retrying the connection. Our browser is expecting to speak HTTP, but we aren’t replying with anything, just closing the connection by moving on to the next loop iteration. When <code>stream</code> goes out of scope and dropped at the end of the loop, its connection gets closed as part of the <code>drop</code> implementation for <code>TcpStream</code>. Browsers sometimes deal with closed connections by retrying, since the problem might be temporary. The important thing is that we’ve successfully gotten a handle on a TCP connection!</p>
 <p id = "para-2970">Remember to stop the program with ctrl-C when you’re done running a particular version of the code, and restart <code>cargo run</code> after you’ve made each set of code changes in order to be running the newest code.</p>
 <h3 id = "link-454">3.1.1. Reading the Request</h3>
@@ -13352,17 +13352,17 @@ message-body
 <h3 id = "link-456">3.1.3. Returning Real HTML</h3>
 <p id = "para-2998">Let’s return more than a blank page. Create a new file, <em>hello.html</em>, in the root of your project directory, that is, not in the <code>src</code> directory. You can put any HTML you want in it; Listing 20-4 shows what the authors used for theirs:</p>
 <p id = "para-2999">Filename: hello.html</p>
-<pre><span style="color:#393d3d;">&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-  &lt;head&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;title&gt;Hello!&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;h1&gt;Hello!&lt;/h1&gt;
-    &lt;p&gt;Hi from Rust&lt;/p&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
+<pre><span style="color:#393d3d;">&lt;!</span><span style="color:#ff5370;">DOCTYPE</span><span style="color:#ff5370;"> html</span><span style="color:#393d3d;">&gt;</span><span style="color:#393d3d;">
+</span><span style="color:#393d3d;">&lt;</span><span style="color:#ff5370;">html</span><span style="color:#393d3d;"> </span><span style="font-style:italic;color:#ffb62c;">lang</span><span style="color:#393d3d;">=</span><span style="color:#393d3d;">&quot;</span><span style="color:#51a825;">en</span><span style="color:#393d3d;">&quot;</span><span style="color:#393d3d;">&gt;</span><span style="color:#393d3d;">
+  </span><span style="color:#393d3d;">&lt;</span><span style="color:#ff5370;">head</span><span style="color:#393d3d;">&gt;</span><span style="color:#393d3d;">
+    </span><span style="color:#393d3d;">&lt;</span><span style="color:#ff5370;">meta</span><span style="color:#393d3d;"> </span><span style="font-style:italic;color:#ffb62c;">charset</span><span style="color:#393d3d;">=</span><span style="color:#393d3d;">&quot;</span><span style="color:#51a825;">utf-8</span><span style="color:#393d3d;">&quot;</span><span style="color:#393d3d;">&gt;</span><span style="color:#393d3d;">
+    </span><span style="color:#393d3d;">&lt;</span><span style="color:#ff5370;">title</span><span style="color:#393d3d;">&gt;</span><span style="color:#393d3d;">Hello!</span><span style="color:#393d3d;">&lt;/</span><span style="color:#ff5370;">title</span><span style="color:#393d3d;">&gt;</span><span style="color:#393d3d;">
+  </span><span style="color:#393d3d;">&lt;/</span><span style="color:#ff5370;">head</span><span style="color:#393d3d;">&gt;</span><span style="color:#393d3d;">
+  </span><span style="color:#393d3d;">&lt;</span><span style="color:#ff5370;">body</span><span style="color:#393d3d;">&gt;</span><span style="color:#393d3d;">
+    </span><span style="color:#393d3d;">&lt;</span><span style="color:#ff5370;">h1</span><span style="color:#393d3d;">&gt;</span><span style="color:#393d3d;">Hello!</span><span style="color:#393d3d;">&lt;/</span><span style="color:#ff5370;">h1</span><span style="color:#393d3d;">&gt;</span><span style="color:#393d3d;">
+    </span><span style="color:#393d3d;">&lt;</span><span style="color:#ff5370;">p</span><span style="color:#393d3d;">&gt;</span><span style="color:#393d3d;">Hi from Rust</span><span style="color:#393d3d;">&lt;/</span><span style="color:#ff5370;">p</span><span style="color:#393d3d;">&gt;</span><span style="color:#393d3d;">
+  </span><span style="color:#393d3d;">&lt;/</span><span style="color:#ff5370;">body</span><span style="color:#393d3d;">&gt;</span><span style="color:#393d3d;">
+</span><span style="color:#393d3d;">&lt;/</span><span style="color:#ff5370;">html</span><span style="color:#393d3d;">&gt;</span><span style="color:#393d3d;">
 </span></pre><p id = "para-3000">Listing 20-4: A sample HTML file to return in a response</p>
 <p id = "para-3001">This is a minimal HTML 5 document with a heading and a little paragraph. Let’s modify <code>handle_connection</code> as shown in Listing 20-5 to read the HTML file, add it to the response as a body, and send it:</p>
 <p id = "para-3002">Filename: src/main.rs</p>
@@ -13448,17 +13448,17 @@ message-body
 </span></pre><p id = "para-3016">Listing 20-7: Responding with status code <code>404</code> and an error page if anything other than <code>/</code> was requested</p>
 <p id = "para-3017">Here, our response has a status line with status code <code>404</code> and the reason phrase <code>NOT FOUND</code>. We still aren’t returning any headers, and the body of the response will be the HTML in the file <em>404.html</em>. Also create a <em>404.html</em> file next to <em>hello.html</em> for the error page; again feel free to use any HTML you’d like or use the example HTML in Listing 20-8:</p>
 <p id = "para-3018">Filename: 404.html</p>
-<pre><span style="color:#393d3d;">&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-  &lt;head&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;title&gt;Hello!&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;h1&gt;Oops!&lt;/h1&gt;
-    &lt;p&gt;Sorry, I don&#39;t know what you&#39;re asking for.&lt;/p&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
+<pre><span style="color:#393d3d;">&lt;!</span><span style="color:#ff5370;">DOCTYPE</span><span style="color:#ff5370;"> html</span><span style="color:#393d3d;">&gt;</span><span style="color:#393d3d;">
+</span><span style="color:#393d3d;">&lt;</span><span style="color:#ff5370;">html</span><span style="color:#393d3d;"> </span><span style="font-style:italic;color:#ffb62c;">lang</span><span style="color:#393d3d;">=</span><span style="color:#393d3d;">&quot;</span><span style="color:#51a825;">en</span><span style="color:#393d3d;">&quot;</span><span style="color:#393d3d;">&gt;</span><span style="color:#393d3d;">
+  </span><span style="color:#393d3d;">&lt;</span><span style="color:#ff5370;">head</span><span style="color:#393d3d;">&gt;</span><span style="color:#393d3d;">
+    </span><span style="color:#393d3d;">&lt;</span><span style="color:#ff5370;">meta</span><span style="color:#393d3d;"> </span><span style="font-style:italic;color:#ffb62c;">charset</span><span style="color:#393d3d;">=</span><span style="color:#393d3d;">&quot;</span><span style="color:#51a825;">utf-8</span><span style="color:#393d3d;">&quot;</span><span style="color:#393d3d;">&gt;</span><span style="color:#393d3d;">
+    </span><span style="color:#393d3d;">&lt;</span><span style="color:#ff5370;">title</span><span style="color:#393d3d;">&gt;</span><span style="color:#393d3d;">Hello!</span><span style="color:#393d3d;">&lt;/</span><span style="color:#ff5370;">title</span><span style="color:#393d3d;">&gt;</span><span style="color:#393d3d;">
+  </span><span style="color:#393d3d;">&lt;/</span><span style="color:#ff5370;">head</span><span style="color:#393d3d;">&gt;</span><span style="color:#393d3d;">
+  </span><span style="color:#393d3d;">&lt;</span><span style="color:#ff5370;">body</span><span style="color:#393d3d;">&gt;</span><span style="color:#393d3d;">
+    </span><span style="color:#393d3d;">&lt;</span><span style="color:#ff5370;">h1</span><span style="color:#393d3d;">&gt;</span><span style="color:#393d3d;">Oops!</span><span style="color:#393d3d;">&lt;/</span><span style="color:#ff5370;">h1</span><span style="color:#393d3d;">&gt;</span><span style="color:#393d3d;">
+    </span><span style="color:#393d3d;">&lt;</span><span style="color:#ff5370;">p</span><span style="color:#393d3d;">&gt;</span><span style="color:#393d3d;">Sorry, I don&#39;t know what you&#39;re asking for.</span><span style="color:#393d3d;">&lt;/</span><span style="color:#ff5370;">p</span><span style="color:#393d3d;">&gt;</span><span style="color:#393d3d;">
+  </span><span style="color:#393d3d;">&lt;/</span><span style="color:#ff5370;">body</span><span style="color:#393d3d;">&gt;</span><span style="color:#393d3d;">
+</span><span style="color:#393d3d;">&lt;/</span><span style="color:#ff5370;">html</span><span style="color:#393d3d;">&gt;</span><span style="color:#393d3d;">
 </span></pre><p id = "para-3019">Listing 20-8: Sample content for the page to send back with any <code>404</code> response</p>
 <p id = "para-3020">With these changes, try running your server again. Requesting <code>127.0.0.1:8080</code> should return the contents of <em>hello.html</em>, and any other request, like <code>127.0.0.1:8080/foo</code>, should return the error HTML from <em>404.html</em>!</p>
 <p id = "para-3021">There’s a lot of repetition between the code in the <code>if</code> and the <code>else</code> blocks: they’re both reading files and writing the contents of the files to the stream. The only differences between the two cases are the status line and the filename. Let’s pull those differences out into an <code>if</code> and <code>else</code> of one line each that will assign the values of the status line and the filename to variables; we can then use those variables unconditionally in the code to read the file and write the response. The resulting code after this refactoring is shown in Listing 20-9:</p>
