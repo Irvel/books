@@ -891,6 +891,28 @@
 		</dict>
 		<dict>
 			<key>name</key>
+			<string>Downloading</string>
+			<key>scope</key>
+			<string>keyword.downloading</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#039b0d</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Note</string>
+			<key>scope</key>
+			<string>keyword.note</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#FFB62C</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
 			<string>SublimeLinter Gutter Mark</string>
 			<key>scope</key>
 			<string>sublimelinter.gutter-mark</string>

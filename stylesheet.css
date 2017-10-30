@@ -2,7 +2,6 @@ body {
     font-family: "SF Pro Text", "Open Sans", sans-serif;
     text-align: justify;
     font-size: 100%;
-    background-color:#fff
 }
 
 p {
@@ -10,6 +9,7 @@ p {
     margin-top: 1em;
     margin: 0;
     hyphens: auto;
+    line-height: 1.8;
 }
 
 blockquote {
@@ -60,7 +60,8 @@ h2, h3 {
   display: block;
   margin-bottom: .5em;
 }
-blockquote h3 {
+blockquote h2, blockquote h3, blockquote h4,
+blockquote h5, blockquote h6 {
     margin-top: 0;
 }
 h4, h5, h6 {
@@ -279,6 +280,11 @@ p.first-para {
     /* Following necessary for Kobo EPUB3 reader??? */
     margin: 0;
     padding: 0;
+}
+
+span.filename {
+    font-style: italic;
+    text-decoration: underline;
 }
 
 {{{additional_code}}}
